@@ -250,6 +250,8 @@ const handleDel=async(id)=>{
   </table>
 </div>
 
+
+
       {/* {objs.map((cardId) => (
   <div key={cardId}>
     <h6> Live id = {cardId}</h6>
