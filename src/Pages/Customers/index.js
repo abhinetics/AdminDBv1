@@ -8,10 +8,14 @@ import './style.css'
 const Customers = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) {
+    console.log("token is " + token);
+    if (!token || token === "undefined") {
+      console.log("inside if");
       window.location.href = "/";
     }
   }, []);
+  
+  
   const [msg, setMsg] = useState('');
 
   const getQuery = async () => {

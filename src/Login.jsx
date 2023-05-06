@@ -7,11 +7,12 @@ const Login = () => {
   const [password, setPassword] = useState("");
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
+    if (token && token !== "undefined") {
       // Redirect to the dashboard page if token is already present
       window.location.href = "/dashboard";
     }
   }, []);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -19,7 +19,15 @@ function SideMenu() {
     setSelectedKeys(pathName);
   }, [location.pathname]);
 
-  const isAuthenticated = localStorage.getItem("token");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+useEffect(() => {
+  const token = localStorage.getItem("token");
+  console.log("here in sidebar");
+  if( token && token !== "undefined") {
+    setIsAuthenticated(true);
+  }
+}, []);
   const navigate = useNavigate();
   return (<>
     {isAuthenticated ? (
