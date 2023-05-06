@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function SideMenu() {
+  
   const location = useLocation();
   const [selectedKeys, setSelectedKeys] = useState("/");
 
@@ -18,9 +19,11 @@ function SideMenu() {
     setSelectedKeys(pathName);
   }, [location.pathname]);
 
+  const isAuthenticated = localStorage.getItem("token");
   const navigate = useNavigate();
-  return (
-    <div className="SideMenu">
+  return (<>
+    {isAuthenticated ? (
+      <div className="SideMenu">
       <Menu
         className="SideMenuVertical"
         mode="vertical"
@@ -33,7 +36,7 @@ function SideMenu() {
           {
             label: "Home Page",
             icon: <AppstoreOutlined />,
-            key: "/",
+            key: "/dashboard",
           },
           {
             label: "Featured",
@@ -55,6 +58,8 @@ function SideMenu() {
         ]}
       ></Menu>
     </div>
+    ):null }
+   </>
   );
 }
 export default SideMenu;

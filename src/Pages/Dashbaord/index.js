@@ -7,6 +7,13 @@ import { Card, Button, Form } from "react-bootstrap";
 
 
 function Dashboard() {
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.href = "/";
+    }
+  }, []);
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");

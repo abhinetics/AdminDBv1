@@ -6,6 +6,12 @@ import jsPDF from 'jspdf';
 import './style.css'
 
 const Customers = () => {
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.href = "/";
+    }
+  }, []);
   const [msg, setMsg] = useState('');
 
   const getQuery = async () => {
